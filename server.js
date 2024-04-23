@@ -1,15 +1,15 @@
 const express = require('express');
 const connectDB = require('./database');
-const routes = require('./routes/UserRoutes');
+const userRoutes = require('./routes/UserRoutes'); // Renomeando para userRoutes para mais clareza
 const app = express();
 const PORT = 3000;
-
 
 connectDB();
 app.use(express.json());
 
-app.get('/api', routes);
+// Definindo as rotas de usuário como manipuladores de rota para a raiz
+app.use('/', userRoutes);
 
 app.listen(PORT, () => {
-  console.log('Funcionou essa merda na porta 3000')
+  console.log('Servidor funcionando na porta 3000');
 });
