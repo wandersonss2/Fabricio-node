@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config.js');
 
+
 const login = async (req, res) => {
     console.log(req.body)
     try {
@@ -17,7 +18,7 @@ const login = async (req, res) => {
             });
         }
 
-        const validPassword = await bcrypt.compare(req.body.password, usuario.password);
+        const validPassword = await bcrypt.compareSync(req.body.password, usuario.password);
         if (!validPassword) {
             return res.status(401).json({ 
                 statusCode: 401, 
