@@ -10,7 +10,7 @@ const login = async (req, res) => {
 
         if (!usuario) {
             return res.status(400).json({ 
-                message: 'Usuário não encontrad',
+                message: 'Usuário não encontrado',
                 data: {
                     email: req.body.email
                 } 
