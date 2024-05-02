@@ -10,14 +10,14 @@ const login = async (req, res) => {
 
         if (!usuario) {
             return res.status(400).json({ 
-                message: 'Usuário não encontrado',
+                message: 'Usuário não encontrad',
                 data: {
                     email: req.body.email
                 } 
             });
         }
 
-        const validPassword = await bcrypt.compare(req.body.password, usuario.password);
+        const validPassword = await bcrypt.compareSync(req.body.password, usuario.password);
         if (!validPassword) {
             return res.status(401).json({ 
                 statusCode: 401, 
