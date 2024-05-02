@@ -5,17 +5,17 @@ class UserRepository {
   async create(userData) {
     const { name, email, password } = userData;
 
-    // Gerar o hash da senha
-    const hashedPassword = await bcrypt.hash(password, 10); // 10 é o número de saltos de hash
+   
+    const hashedPassword = await bcrypt.hash(password, 10); 
 
-    // Criar um novo usuário com a senha hasheada
+  
     const newUser = new User({
       name: name,
       email: email,
-      password: hashedPassword // Usando a senha hasheada
+      password: hashedPassword 
     });
 
-    // Salvar o usuário no banco de dados
+    
     await newUser.save();
     return newUser;
   }
